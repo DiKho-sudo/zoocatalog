@@ -76,7 +76,7 @@ function HomePage() {
               >
                 {category.image && (
                   <img 
-                    src={`http://${window.location.hostname}:8000${category.image}`}
+                    src={`${process.env.REACT_APP_API_URL ? process.env.REACT_APP_API_URL.replace('/api', '') : `http://${window.location.hostname}:8000`}${category.image}`}
                     alt={category.name}
                   />
                 )}
