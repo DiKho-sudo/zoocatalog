@@ -1,0 +1,47 @@
+services:
+  # Django backend
+  backend:
+    build: ./backend
+    container_name: zoo_backend
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - ./backend:/app
+      # media и static теперь часть ./backend:/app монтирования
+      # - media_files:/app/media  # ОТКЛЮЧЕНО - используем локальную папку
+      # - static_files:/app/staticfiles
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=zoo_catalog
+      - DB_USER=postgres
+      - DB_PASSWORD=PostXDN_(21567)
+      - DB_HOST=host.docker.internal  # Подключение к локальной БД Windows
+      - DB_PORT=5432
+      - DEBUG=True
+
+  # React frontend
+  frontend:
+    build: ./frontend
+    container_name: zoo_frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - HOST=0.0.0.0
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  media_files:
+  static_files:
+
+
+
+

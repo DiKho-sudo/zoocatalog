@@ -1,0 +1,159 @@
+.catalog-page {
+  padding: 40px 0;
+}
+
+.catalog-page h1 {
+  font-size: 36px;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+}
+
+.filters-sidebar {
+  position: sticky;
+  top: 90px;
+  height: fit-content;
+}
+
+.products-area {
+  min-height: 500px;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 40px;
+}
+
+.page-button {
+  padding: 10px 16px;
+  min-width: 40px;
+  background-color: white;
+  color: #66BB6A;
+  border: 2px solid #A5D6A7;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.page-button:hover:not(:disabled) {
+  background-color: #81C784;
+  color: white;
+  border-color: #81C784;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(129, 199, 132, 0.3);
+}
+
+.page-button.active {
+  background-color: #66BB6A;
+  color: white;
+  border-color: #66BB6A;
+  box-shadow: 0 4px 12px rgba(102, 187, 106, 0.3);
+}
+
+.page-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.page-dots {
+  padding: 10px;
+  color: #999;
+  user-select: none;
+}
+
+.loading,
+.no-products {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #E8F5E9;
+  border-top: 4px solid #66BB6A;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.no-products p:first-child {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.no-products p:last-child {
+  font-size: 16px;
+}
+
+@media (max-width: 1024px) {
+  .catalog-layout {
+    grid-template-columns: 250px 1fr;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .catalog-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .filters-sidebar {
+    position: static;
+  }
+  
+  .products-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .products-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .catalog-page h1 {
+    font-size: 28px;
+  }
+  
+  .pagination {
+    flex-wrap: wrap;
+  }
+}
+
+
+

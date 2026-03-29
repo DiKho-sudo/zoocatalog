@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+*.pyo
+*.sqlite3
+backend/venv/
+backend/media/
+backend/staticfiles/
+backend/.env
+frontend/node_modules/
+frontend/build/
+.env
+*.xlsx
+.cursor/
